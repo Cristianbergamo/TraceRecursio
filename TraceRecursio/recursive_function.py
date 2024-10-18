@@ -3,7 +3,9 @@ import os
 import inspect
 from datetime import datetime
 import networkx as nx
+import importlib.resources as pkg_resources
 from pyvis.network import Network
+from TraceRecursio import config
 
 
 class Track:
@@ -134,7 +136,8 @@ class Track:
         with open(html_filename, "r") as file:
             html_content = file.read()
 
-        with open("config/default_graph.css", "r") as f:
+        css_path = pkg_resources.files(config) / 'default_graph.css'
+        with css_path.open('r') as f:
             html_content = html_content.replace("</head>", f.read() + "</head>")
 
         with open(html_filename, "w") as file:
@@ -179,6 +182,7 @@ def nth_fibonacci(n):
     # Recursive case: sum of the two preceding Fibonacci numbers
     return nth_fibonacci(n - 1) + nth_fibonacci(n - 2)
 
+
 @Track
 def hanoi_autonoma(disks, source, helper, destination):
     if disks == 1:
@@ -188,6 +192,7 @@ def hanoi_autonoma(disks, source, helper, destination):
     hanoi_autonoma(disks - 1, source, destination, helper)
     print(f"disk {disks} goes from {source} to {destination}")
     hanoi_autonoma(disks - 1, helper, source, destination)
+
 
 if __name__ == "__main__":
     # Driver code
