@@ -7,16 +7,16 @@ license = "MIT"
 authors = ["Cristian Bergamo <bergamo.1908@gmail.com>" ]
 repository = "https://github.com/Cristianbergamo/TraceRecursio/tree/main"
 packages = [
-    { include = "TraceRecursio" }
+    { include = "TraceRecursio" },
+    { include = "config" }
 ]
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
 networkx = "^2.5"  # Aggiungi altre dipendenze qui
 pyvis = "^0.3.2"
 
-[tool.poetry.include]
-include = ["config/*"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
