@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "TraceRecursio"
-version = "1.0.0"
+version = "2.0.0"
 description = "This library provides a decorator that traces the execution of recursive functions, representing their behavior through a graph."
 readme = "README.md"
 license = "MIT"
