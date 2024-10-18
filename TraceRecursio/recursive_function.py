@@ -134,7 +134,7 @@ class Track:
         with open(html_filename, "r") as file:
             html_content = file.read()
 
-        with open("../config/default_graph.css", "r") as f:
+        with open("config/default_graph.css", "r") as f:
             html_content = html_content.replace("</head>", f.read() + "</head>")
 
         with open(html_filename, "w") as file:
@@ -172,10 +172,6 @@ def reverse_string(string):
 
 @Track
 def nth_fibonacci(n):
-    print("f_back: ", id(inspect.currentframe().f_back.f_back))
-    print("current_f: ", id(inspect.currentframe()))
-    print("n: ", n)
-    print("\n")
     # Base case: if n is 0 or 1, return n
     if n <= 1:
         return n
