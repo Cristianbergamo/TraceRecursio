@@ -21,7 +21,7 @@ pip install TraceRecursio
 Here is a minimal example to demonstrate the library’s functionality:
 
 ```python
-from TraceRecursio import Trace
+from TraceRecursio.tracer import Trace
 
 # Applying the Trace decorator to a recursive function
 @Trace
@@ -46,7 +46,7 @@ Running this code will generate a `factorial.html` file that contains the intera
 In this example, we apply `@Trace` to a recursive function that calculates the nth number in the Fibonacci sequence. The decorator tracks each step of the recursion:
 
 ```python
-from TraceRecursio import Trace
+from TraceRecursio.tracer import Trace
 
 @Trace
 def fibonacci(n):
