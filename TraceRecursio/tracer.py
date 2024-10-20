@@ -11,13 +11,14 @@ class Trace:
     os.makedirs("../data", exist_ok=True)
 
     def __init__(self, input_function):
+        self.__input_function__ = input_function
+        self.__last_frame__ = None
+        self.__n_call__ = 1
+
         self.edges = {}
         self.frames_order = {}
         self.parameters = {}
         self.returns = {}
-        self.input_function = input_function
-        self.last_frame = None
-        self.n_call = 1
         self.G = nx.DiGraph()
 
         Trace.instances[input_function.__name__] = self
@@ -26,9 +27,9 @@ class Trace:
         def wrapper(*args, **kwargs):
             current_frame = inspect.currentframe()
             self._register_parameters(str(id(current_frame)), args, kwargs)
-            self._get_f_back_from_history(self.last_frame, current_frame)
-            self.last_frame = current_frame
-            result = self.input_function(instance, *args, **kwargs)
+            self._get_f_back_from_history(self.__last_frame__, current_frame)
+            self.__last_frame__ = current_frame
+            result = self.__input_function__(instance, *args, **kwargs)
             self.returns[str(id(current_frame))] = result
             return result
 
@@ -37,9 +38,9 @@ class Trace:
     def __call__(self, *args, **kwargs):
         current_frame = inspect.currentframe()
         self._register_parameters(str(id(current_frame)), args, kwargs)
-        self._get_f_back_from_history(self.last_frame, current_frame)
-        self.last_frame = current_frame
-        result = self.input_function(*args, **kwargs)
+        self._get_f_back_from_history(self.__last_frame__, current_frame)
+        self.__last_frame__ = current_frame
+        result = self.__input_function__(*args, **kwargs)
         self.returns[str(id(current_frame))] = result
         return result
 
@@ -62,7 +63,7 @@ class Trace:
             return
 
         if self._get_f_back_from_history(last_frame.f_back, current_frame):
-            parent = str(id(self.last_frame))
+            parent = str(id(self.__last_frame__))
 
             if parent not in self.frames_order.keys():
                 self._register_node(parent)
@@ -76,8 +77,8 @@ class Trace:
 
     def _register_node(self, node):
         self.G.add_node(node, label=node)
-        self.frames_order[node] = self.n_call
-        self.n_call += 1
+        self.frames_order[node] = self.__n_call__
+        self.__n_call__ += 1
 
     def _register_edge(self, parent_node, child_node):
         self.G.add_edge(parent_node, child_node)
