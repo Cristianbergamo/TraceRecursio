@@ -118,7 +118,7 @@ Each node not only shows the recursive call but also contains details about the 
 ## Additional Features
 
 ### `Track` class
-The `Track` class includes the `instances` method, which provides a dictionary with the following structure:
+The `Track` class includes the `instances` attribute, which provides a dictionary with the following structure:
 - **Key**: The name of the decorated function.
 - **Value**: The decorated function itself, which contains the following useful attributes for further exploration:
   
