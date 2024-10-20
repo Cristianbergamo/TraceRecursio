@@ -84,18 +84,11 @@ The hierarchical graph and other layout configurations can be enabled via the in
 
 ## How It Works
 
-The `@Trace` decorator monitors the execution of recursive functions. The key method is `get_graph`, which generates an interactive HTML file displaying:
+The `@Trace` decorator monitors the execution of recursive functions. The key method is `get_graph`. This method accepts a string as an argument, which should be the name of the decorated function. This method generates and saves the HTML file of the recursion graph in the root directory where the code is executed, displaying:
 - **Nodes**: Represent each function call.
 - **Edges**: Show the relationship between parent and child function calls.
 - **Detailed information**: Each node contains the arguments, return value, and call order for the corresponding function call.
 
-The `get_graph` method accepts a string as an argument, which should be the name of the decorated function. This method generates and saves the HTML file of the recursion graph in the root directory where the code is executed.
-
-
-The `@Trace` decorator monitors the execution of recursive functions. The key method is `get_graph`, which generates an interactive HTML file displaying:
-- **Nodes**: Represent each function call.
-- **Edges**: Show the relationship between parent and child function calls.
-- **Detailed information**: Each node contains the arguments, return value, and call order for the corresponding function call.
 
 ### Detailed Explanation of the Graph Output
 
@@ -143,21 +136,3 @@ We welcome contributions! Please feel free to submit a pull request or open an i
 ## License
 
 This project is licensed under the MIT License.
-
-
-## Additional Features
-
-### `get_graph` method
-The `get_graph` method accepts a string as an argument, which should be the name of the decorated function. This method generates and saves the HTML file of the recursion graph in the root directory where the code is executed.
-
-### `Track` class
-The `Track` class includes the `instances` method, which provides a dictionary with the following structure:
-- **Key**: The name of the decorated function.
-- **Value**: The decorated function itself, which contains the following useful attributes for further exploration:
-  
-  - `edges`: A dictionary where the key is the node ID, and the value is a list of connected nodes.
-  - `frames_order`: A dictionary with the node ID as the key and an ordinal number representing the order in which that node was generated.
-  - `parameters`: A dictionary where the key is the node ID and the value is the list of parameters passed to the function during that call.
-  - `returns`: A dictionary where the key is the node ID and the value is the result returned from that function call.
-  - `G`: The graph generated using NetworkX.
-
