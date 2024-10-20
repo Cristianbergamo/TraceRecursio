@@ -42,34 +42,10 @@ Running this code will generate a `factorial.html` file that contains the intera
 
 ## Use Cases
 
-### Example 1: Tracing a Factorial Function
+### Example 1: Fibonacci Sequence
 
-In this example, we apply `@Trace` to a recursive factorial function. The decorator will track each step of the recursion:
 
-```python
-from TraceRecursio import Trace
-
-@Trace
-def factorial(n):
-    if n == 1:
-        return 1
-    return n * factorial(n - 1)
-
-factorial(5)
-
-# Generate the graph visualization
-Trace.get_graph('factorial')
-```
-
-After calling the `factorial` function, the graph will show each step of the recursion, displaying:
-- Arguments: `n`
-- Return values: The factorial result of each step.
-
-![Factorial Graph](images/factorial_graph.png)
-
-### Example 2: Fibonacci Sequence
-
-You can trace more complex recursive functions, like the Fibonacci sequence:
+In this example, we apply `@Trace` to a recursive function that calculates the nth number in the Fibonacci sequence. The decorator will track each step of the recursion:
 
 ```python
 from TraceRecursio import Trace
@@ -80,13 +56,13 @@ def fibonacci(n):
         return n
     return fibonacci(n - 1) + fibonacci(n - 2)
 
-fibonacci(4)
+fibonacci(5)
 
 # Generate the graph visualization
 Trace.get_graph('fibonacci')
 ```
 
-![Fibonacci Graph](images/fibonacci_graph.png)
+![Fibonacci Graph](assets/images/fibonacci_5.png)
 
 ## How It Works
 
