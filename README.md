@@ -1,5 +1,3 @@
-![Logo](https://github.com/Cristianbergamo/TraceRecursio/raw/main/assets/images/logo.webp)
-
 # TraceRecursio
 
 **TraceRecursio** is a Python library that provides a decorator to trace the execution of recursive functions. The library generates a visual representation of the recursion process through a directed graph, allowing you to observe how the function operates step-by-step, tracking the parameters, return values, and the order of function calls.
