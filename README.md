@@ -1,3 +1,4 @@
+![Logo](https://github.com/Cristianbergamo/TraceRecursio/raw/main/assets/images/logo.webp)
 
 # TraceRecursio
 
