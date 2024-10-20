@@ -62,7 +62,7 @@ fibonacci(5)
 Trace.get_graph('fibonacci')
 ```
 
-![Fibonacci Graph](assets/images/fibonacci_5.png)
+![Fibonacci Graph](./assets/images/fibonacci_5.png)
 
 ## How It Works
 
