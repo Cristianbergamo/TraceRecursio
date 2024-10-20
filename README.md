@@ -40,12 +40,12 @@ Trace.get_graph('factorial')
 
 Running this code will generate a `factorial.html` file that contains the interactive graph of the recursive calls.
 
-## Use Cases
+
+## Use Cases 
 
 ### Example 1: Fibonacci Sequence
 
-
-In this example, we apply `@Trace` to a recursive function that calculates the nth number in the Fibonacci sequence. The decorator will track each step of the recursion:
+In this example, we apply `@Trace` to a recursive function that calculates the nth number in the Fibonacci sequence. The decorator tracks each step of the recursion:
 
 ```python
 from TraceRecursio import Trace
@@ -62,7 +62,27 @@ fibonacci(5)
 Trace.get_graph('fibonacci')
 ```
 
+#### Default Graph Representation
+
+By default, the `get_graph` method generates a standard directed graph that shows the recursion steps:
+
 ![Fibonacci Graph](./assets/images/fibonacci_5.png)
+
+#### Hierarchical Graph Representation
+
+You can also visualize the recursion as a hierarchical graph, which organizes the nodes more clearly based on their relationships. To enable this, you need to modify the settings by enabling `hierarchical` view, setting `sortMethod` to `directed`, and adjusting the `shakeTowards` parameter to `roots`.
+This will result in a more tree-like graph, where the root of the recursion (initial function call) is at the top, and subsequent calls branch downward:
+
+![Fibonacci Hierarchical Graph](./assets/images/fibonacci_5_tree.png)
+
+
+The hierarchical graph and other layout configurations can be enabled via the interactive control panel that appears in the graph view. Here’s an image of the control panel where you can find the options for:
+- Enabling **Hierarchical Layout**
+- Setting **Sort Method** to "directed"
+- Adjusting **Shake Towards** to "roots"
+
+![Settings Panel](./assets/images/view_setting.png)
+
 
 ## How It Works
 
